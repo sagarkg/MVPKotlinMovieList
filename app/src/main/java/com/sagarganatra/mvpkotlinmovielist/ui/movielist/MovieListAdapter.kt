@@ -31,7 +31,7 @@ class MovieListAdapter(
             itemView.title.text = movie.title
             itemView.subtitle.text = movie.releaseDate
             itemView.description.text = movie.overview
-            itemView.rating.text = movie.voterAverage.toString()
+            itemView.rating.text = movie.voteAverage.toString()
         }
     }
 }

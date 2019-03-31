@@ -7,9 +7,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 
-class MovieListPresenter constructor(
+class MovieListPresenter(
     private val view: MovieListContract.View
-) : MovieListContract.Presenter, IBasePresenter<MovieListActivity> {
+): MovieListContract.Presenter, IBasePresenter<MovieListActivity> {
 
     private lateinit var repository: MovieListContract.MovieRepository
     private val compositeDisposable = CompositeDisposable()
@@ -23,17 +23,13 @@ class MovieListPresenter constructor(
         compositeDisposable.clear()
     }
 
-    override fun setView(view: MovieListActivity) {
-
-    }
-
-
     override fun getMovies() {
 
         view.showLoading()
 
-         repository.getMovies()
-            .subscribeOn(Schedulers.io())
+         compositeDisposable.add(
+             repository.getMovies()
+             .subscribeOn(Schedulers.io())
              .observeOn(AndroidSchedulers.mainThread())
              .doOnSuccess {
                  view.hideLoading()
@@ -42,7 +38,7 @@ class MovieListPresenter constructor(
                  view.hideLoading()
                  view.showError(it.message)
              }.subscribe()
-
+         )
     }
 
     override fun showMovieDetails(id: Int) {

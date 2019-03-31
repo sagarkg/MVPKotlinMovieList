@@ -1,10 +1,8 @@
 package com.sagarganatra.mvpkotlinmovielist.ui.movielist
 
-import com.sagarganatra.mvpkotlinmovielist.core.ViewState
 import com.sagarganatra.mvpkotlinmovielist.data.model.Movie
 import com.sagarganatra.mvpkotlinmovielist.data.model.MovieResponse
 import io.reactivex.Single
-import retrofit2.Call
 
 interface MovieListContract {
     interface View {

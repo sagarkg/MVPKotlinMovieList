@@ -6,7 +6,7 @@ data class Movie (
     val id: Int,
     @SerializedName("vote_count")val voteCount: Int,
     val video: Boolean,
-    @SerializedName("voter_average")val voterAverage: Double,
+    @SerializedName("vote_average")val voteAverage: Double,
     val title: String,
     val popularity: Double,
     @SerializedName("poster_path")val posterPath: String,

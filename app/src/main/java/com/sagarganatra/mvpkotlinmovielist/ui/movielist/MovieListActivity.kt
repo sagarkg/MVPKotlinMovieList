@@ -21,6 +21,7 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View, IBaseView
 
         presenter = MovieListPresenter(this)
         presenter.onAttach()
+        presenter.getMovies()
     }
 
 
@@ -33,16 +34,17 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View, IBaseView
     }
 
     override fun showLoading(){
-        progressBar.show()
+        progressBar.visibility = View.VISIBLE
         errorMessageTextView.visibility = View.GONE
     }
 
     override fun hideLoading() {
-        progressBar.hide()
+        progressBar.visibility = View.GONE
     }
 
     override fun showError(message: String?) {
         errorMessageTextView.visibility = View.VISIBLE
+        errorMessageTextView.text = message
     }
 
     override fun showMovieDetail(id: Int) {
